@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes} from 'react-router-dom'
+import ProtectedRoute from '../src/Components/ProtectedRoute'
+import Register from "../src/Components/SignUp"
+import Login from './Components/Login'
+import Todo from './Components/Todo'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+const App = ()=><div>
+    
+    <BrowserRouter>
+    <Routes>
+    <Route  path = "/login" element= {<Login/>}/> 
+      <Route  path = "/" element= {<ProtectedRoute><Todo/></ProtectedRoute>} />
+      <Route path = "/register" element ={<Register/>}/>
+    </Routes>
+    </BrowserRouter>
+</div>
+
+export default App
